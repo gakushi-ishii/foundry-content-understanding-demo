@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Azure
+.azure/
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Data (large files)
+sample-data/pdf/*.pdf
+sample-data/structured/*.parquet
+!sample-data/pdf/.gitkeep
+!sample-data/structured/.gitkeep
