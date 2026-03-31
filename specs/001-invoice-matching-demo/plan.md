@@ -46,8 +46,7 @@ src/
 ├── agent/                    # Microsoft Agent Framework SDK ベースの Agent コード
 │   ├── agent.py              # Agent 定義 (ツール接続、プロンプト)
 │   ├── tools/                # Agent ツール (AI Search、Fabric Data Agent 接続)
-│   ├── config.py             # 設定
-│   └── Dockerfile            # Container Apps 用
+│   └── config.py             # 設定
 ├── content-processing/       # Content Understanding 処理
 │   ├── analyzer.py           # カスタムアナライザー定義・実行
 │   ├── uploader.py           # OneLake への JSON 格納
@@ -67,6 +66,7 @@ src/
 
 scripts/
 ├── generate-pdfs.py           # WWI データから PDF 請求書生成
+├── setup-analyzer.py          # Content Understanding カスタムアナライザー定義
 └── setup-search-index.py      # AI Search インデックス作成・設定
 
 infra/
@@ -74,7 +74,8 @@ infra/
 ├── modules/
 │   ├── container-apps.bicep
 │   ├── ai-search.bicep
-│   ├── content-understanding.bicep
+│   ├── ai-services.bicep
+│   ├── ai-foundry.bicep
 │   └── container-registry.bicep
 └── main.parameters.json
 

@@ -59,7 +59,7 @@
 - [ ] T018 [US4] Create WWI サンプル発注データ (CSV) with PurchaseOrderID, SupplierName, OrderDate, LineItems, TotalAmount in sample-data/structured/purchase-orders.csv
 - [ ] T019 [US4] Create PDF 請求書生成スクリプト (ReportLab + Noto Sans JP) with 正常一致・金額不一致・仕入先不在パターン in scripts/generate-pdfs.py
 - [ ] T020 [US4] Add Noto Sans JP font file for Japanese PDF rendering in scripts/fonts/NotoSansJP-Regular.ttf
-- [ ] T021 [US4] Generate initial sample PDFs (5+ files) to sample-data/pdf/ by running scripts/generate-pdfs.py
+- [ ] T021 [US4] Generate initial sample PDFs (5+ files, including 日英混在パターン) to sample-data/pdf/ by running scripts/generate-pdfs.py
 
 **Checkpoint**: sample-data/pdf/ に正常一致 (PO-001〜PO-003)、金額不一致 (PO-004)、仕入先不在 (PO-999) の PDF が存在する
 
@@ -96,7 +96,7 @@
 - [ ] T029 [US2] Create Agent config (Foundry project, workspace_id, artifact_id, AI Search endpoint) in src/agent/config.py
 - [ ] T030 [US2] Implement AI Search tool (AzureAISearchTool でインデックス検索、PO Number フィルタ) in src/agent/tools/search_tool.py
 - [ ] T031 [US2] Implement Fabric Data Agent tool (MicrosoftFabricPreviewTool で発注データクエリ) in src/agent/tools/fabric_tool.py
-- [ ] T032 [US2] Implement Agent 定義 (System Prompt に照合ルール: PO Number 主キー、金額・日付検証、回答フォーマット指示) in src/agent/agent.py
+- [ ] T032 [US2] Implement Agent 定義 (System Prompt に照合ルール: PO Number 主キー、金額・日付検証、回答フォーマット指示、重複 PO Number 時の全候補提示ルール) in src/agent/agent.py
 - [ ] T033 [US2] Implement match service (Agent への質問送信、レスポンス解析、MatchingResult 構築) in src/webapp/backend/services/match_service.py
 - [ ] T034 [US2] Implement POST /api/match endpoint (scenario="A") per contracts/api.md in src/webapp/backend/routers/match.py
 
@@ -146,12 +146,13 @@
 
 **Purpose**: ドキュメント、エラーハンドリング、デモ手順の最終整備
 
-- [ ] T047 [P] Create デモ環境セットアップガイド (azd up 手順、Fabric Lakehouse 手動設定、環境変数設定) in docs/setup-guide.md
+- [ ] T047 [P] Create デモ環境セットアップガイド (azd up 手順、Fabric Lakehouse 手動設定、データインポート手順、マネージド ID の RBAC 設定 (Fabric ワークスペース Contributor)、環境変数設定) in docs/setup-guide.md
 - [ ] T048 [P] Create デモ実行手順書 (デモフロー、シナリオ A/B の説明ポイント、想定 Q&A) in docs/demo-script.md
-- [ ] T049 [P] Add edge case handling: PDF validation (破損チェック、サイズ制限、パスワード保護検出) in src/webapp/backend/services/upload_service.py
+- [ ] T049 [P] Add edge case handling: PDF validation (破損チェック、サイズ制限、パスワード保護検出、50ページ超のページ数制限) in src/webapp/backend/services/upload_service.py
 - [ ] T050 [P] Add edge case handling: Agent のスコープ外質問に対するガードレール in src/agent/agent.py
 - [ ] T051 Update README.md with project overview, architecture diagram, quickstart reference in README.md
-- [ ] T052 Run quickstart.md validation (全手順を実行し、デモが正常動作することを確認)
+- [ ] T052 Measure and verify performance criteria: SC-001 (PDF→構造化 30秒以内) and SC-003 (Agent照合応答 15秒以内) with sample PDFs
+- [ ] T053 Run quickstart.md validation (全手順を実行し、デモが正常動作することを確認)
 
 ---
 
